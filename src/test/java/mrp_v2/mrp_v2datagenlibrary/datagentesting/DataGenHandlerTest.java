@@ -19,6 +19,7 @@ public class DataGenHandlerTest
             LootTables lootTables = new LootTables();
             lootTables.addLootTable(Blocks.GLASS, lootTables::registerDropSelfLootTable);
             helper.addLootTables(lootTables);
+            helper.addRecipeGenerator(RecipeGeneratorTest::new);
         }
     }
 }
