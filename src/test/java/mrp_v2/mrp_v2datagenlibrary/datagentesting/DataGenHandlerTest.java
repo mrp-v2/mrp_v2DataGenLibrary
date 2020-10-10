@@ -13,7 +13,7 @@ public class DataGenHandlerTest
 {
     @SubscribeEvent public static void gatherDataEvent(final GatherDataEvent event)
     {
-        DataGeneratorHelper helper = new DataGeneratorHelper(event.getGenerator(), MRP_V2DataGenLibrary.ID);
+        DataGeneratorHelper helper = new DataGeneratorHelper(event, MRP_V2DataGenLibrary.ID);
         if (event.includeServer())
         {
             LootTables lootTables = new LootTables();
