@@ -20,6 +20,13 @@ public class DataGenHandlerTest
             lootTables.addLootTable(Blocks.GLASS, lootTables::registerDropSelfLootTable);
             helper.addLootTables(lootTables);
             helper.addRecipeGenerator(RecipeGeneratorTest::new);
+            helper.addBlockTagGenerator(BlockTagGeneratorTest::new);
+            helper.addItemTagGenerator(ItemTagGeneratorTest::new);
+        }
+        if (event.includeClient())
+        {
+            helper.addBlockStateProvider(BlockStateProviderTest::new);
+            helper.addItemModelProvider(ItemModelProviderTest::new);
         }
     }
 }

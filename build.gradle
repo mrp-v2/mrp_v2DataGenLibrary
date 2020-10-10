@@ -12,6 +12,8 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+apply plugin: 'maven-publish'
+
 def capitalizedModId = modDisplayName.replace(' ', '')
 def modId = capitalizedModId.toLowerCase()
 def forgeVersion = "${forgeMajor}.${forgeMinor}.${forgePatch}"
@@ -131,5 +133,19 @@ processResources {
     }
     from(sourceSets.main.resources.srcDirs) {
         exclude '**/*'
+    }
+}
+
+task devJar(type: Jar) {
+    classifier = 'dev'
+    from sourceSets.main.output
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+            artifact devJar
+        }
     }
 }

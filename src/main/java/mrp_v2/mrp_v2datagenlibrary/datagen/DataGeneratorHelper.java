@@ -4,6 +4,8 @@ import com.mojang.datafixers.util.Function3;
 import com.mojang.datafixers.util.Function4;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 
@@ -48,5 +50,19 @@ public class DataGeneratorHelper
     {
         this.dataGenerator.addProvider(
                 blockTagGeneratorConstructor.apply(this.dataGenerator, this.modId, this.existingFileHelper));
+    }
+
+    public void addBlockStateProvider(
+            Function3<DataGenerator, String, ExistingFileHelper, ? extends BlockStateProvider> blockStateProviderConstructor)
+    {
+        this.dataGenerator.addProvider(
+                blockStateProviderConstructor.apply(this.dataGenerator, this.modId, this.existingFileHelper));
+    }
+
+    public void addItemModelProvider(
+            Function3<DataGenerator, String, ExistingFileHelper, ? extends ItemModelProvider> itemModelProviderConstructor)
+    {
+        this.dataGenerator.addProvider(
+                itemModelProviderConstructor.apply(this.dataGenerator, this.modId, this.existingFileHelper));
     }
 }
