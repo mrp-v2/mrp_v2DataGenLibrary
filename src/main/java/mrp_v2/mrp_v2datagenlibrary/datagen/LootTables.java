@@ -29,7 +29,7 @@ public class LootTables extends BlockLootTables
 
     @Override protected final void addTables()
     {
-        for (Map.Entry<Block, Consumer<Block>> entry : knownBlocks.entrySet())
+        for (Map.Entry<Block, Consumer<Block>> entry : this.knownBlocks.entrySet())
         {
             entry.getValue().accept(entry.getKey());
         }

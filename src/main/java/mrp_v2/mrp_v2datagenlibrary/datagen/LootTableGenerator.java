@@ -32,7 +32,7 @@ public class LootTableGenerator extends LootTableProvider
             Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>> lootTablesProvider, String modId)
     {
         super(dataGeneratorIn);
-        lootTables = ImmutableList.of(Pair.of(lootTablesProvider, LootParameterSets.BLOCK));
+        this.lootTables = ImmutableList.of(Pair.of(lootTablesProvider, LootParameterSets.BLOCK));
         this.modId = modId;
     }
 
@@ -51,6 +51,6 @@ public class LootTableGenerator extends LootTableProvider
 
     @Override public String getName()
     {
-        return super.getName() + ": " + modId;
+        return super.getName() + ": " + this.modId;
     }
 }
