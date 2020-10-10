@@ -25,6 +25,7 @@ group = "${author}.${archivesBaseName}"
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' +
         System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+
 minecraft {
     mappings channel: mappingsChannel, version: mappingsVersion
     runs {
@@ -38,6 +39,15 @@ minecraft {
                 }
             }
         }
+        testClient {
+            parent runs.client
+            workingDirectory project.file('testrun')
+            mods {
+                mrp_v2datagenlibrary {
+                    sources sourceSets.main, sourceSets.test
+                }
+            }
+        }
         server {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -45,6 +55,15 @@ minecraft {
             mods {
                 mrp_v2datagenlibrary {
                     source sourceSets.main
+                }
+            }
+        }
+        testServer {
+            parent runs.server
+            workingDirectory project.file('testrun')
+            mods {
+                mrp_v2datagenlibrary {
+                    sources sourceSets.main, sourceSets.test
                 }
             }
         }
@@ -56,6 +75,15 @@ minecraft {
             mods {
                 mrp_v2datagenlibrary {
                     source sourceSets.main
+                }
+            }
+        }
+        testData {
+            parent runs.data
+            workingDirectory project.file('testrun')
+            mods {
+                mrp_v2datagenlibrary {
+                    sources sourceSets.main, sourceSets.test
                 }
             }
         }

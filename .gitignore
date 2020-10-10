@@ -10,4 +10,6 @@
 
 # other
 /run/
+/testrun/
 /logs/
+/src/generated/resources/.cache/cache
