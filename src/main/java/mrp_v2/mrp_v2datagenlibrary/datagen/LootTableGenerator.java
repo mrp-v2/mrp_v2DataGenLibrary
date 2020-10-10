@@ -3,6 +3,7 @@ package mrp_v2.mrp_v2datagenlibrary.datagen;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.IDataProvider;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.loot.*;
 import net.minecraft.util.ResourceLocation;
@@ -13,11 +14,19 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+/**
+ * Pass an instance of this class to {@link DataGenerator#addProvider(IDataProvider)}.
+ */
 public class LootTableGenerator extends LootTableProvider
 {
     private final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>>
             lootTables;
     private final String modId;
+
+    public LootTableGenerator(DataGenerator dataGeneratorIn, LootTables lootTables, String modId)
+    {
+        this(dataGeneratorIn, () -> lootTables, modId);
+    }
 
     public LootTableGenerator(DataGenerator dataGeneratorIn,
             Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>> lootTablesProvider, String modId)
