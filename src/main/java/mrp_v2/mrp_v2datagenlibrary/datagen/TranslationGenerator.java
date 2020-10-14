@@ -1,7 +1,6 @@
 package mrp_v2.mrp_v2datagenlibrary.datagen;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -15,11 +14,6 @@ public abstract class TranslationGenerator extends LanguageProvider
     {
         super(gen, modid, locale);
         this.modid = modid;
-    }
-
-    public void add(ContainerType<?> key, String name)
-    {
-        add(key.getRegistryName().getNamespace() + ".container." + key.getRegistryName().getPath(), name);
     }
 
     public void add(ItemGroup key, String name)
