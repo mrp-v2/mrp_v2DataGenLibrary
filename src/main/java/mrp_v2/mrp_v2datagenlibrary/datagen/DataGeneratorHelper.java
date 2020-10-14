@@ -7,6 +7,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 
 import java.util.function.BiFunction;
@@ -64,5 +65,11 @@ public class DataGeneratorHelper
     {
         this.dataGenerator.addProvider(
                 itemModelProviderConstructor.apply(this.dataGenerator, this.modId, this.existingFileHelper));
+    }
+
+    public void addLanguageProvider(
+            BiFunction<DataGenerator, String, ? extends LanguageProvider> languageProviderConstructor)
+    {
+        this.dataGenerator.addProvider(languageProviderConstructor.apply(this.dataGenerator, this.modId));
     }
 }
