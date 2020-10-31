@@ -1,5 +1,6 @@
 package mrp_v2.mrp_v2datagenlibrary.datagen;
 
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -31,6 +32,17 @@ public abstract class TranslationGenerator extends LanguageProvider
                             key +
                             " because its groupName is not a TranslationTextComponent!");
         }
+    }
+
+    public void add(KeyBinding keybind, String description, String category)
+    {
+        add(keybind, description);
+        add(keybind.getKeyCategory(), category);
+    }
+
+    public void add(KeyBinding keybind, String description)
+    {
+        add(keybind.getKeyDescription(), description);
     }
 
     @Override public String getName()
