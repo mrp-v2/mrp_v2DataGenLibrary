@@ -136,16 +136,10 @@ processResources {
     }
 }
 
-task devJar(type: Jar) {
-    classifier = 'dev'
-    from sourceSets.main.output
-}
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
             artifact jar
-            artifact devJar
         }
     }
 }
