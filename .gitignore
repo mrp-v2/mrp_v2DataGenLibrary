@@ -12,4 +12,5 @@
 /run/
 /testrun/
 /logs/
-/src/generated/resources/.cache/cache
+/src/generated/
+/src/test/
